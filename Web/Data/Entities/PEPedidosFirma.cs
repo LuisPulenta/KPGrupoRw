@@ -13,5 +13,6 @@ namespace Web.Data.Entities
         public DateTime? FECHA { get; set; }
         public int HS { get; set; }
         public string MEDIOFIRMA { get; set; }
+        public string HSTexto { get; set; }
     }
 }

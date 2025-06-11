@@ -7,12 +7,11 @@ namespace Web.Data.Entities
     {
         [Key]
         public int NroPedido { get; set; }
-        public DateTime FECHA { get; set; }
         public string Estado { get; set; }
+        public DateTime FECHA { get; set; }
         public string NroPedidoObra { get; set; }
         public int TotalItemAprobados { get; set; }
         public decimal ImporteAprobados { get; set; }
-        public int IDUSUARIO { get; set; }
-        public int IDFIRMA { get; set; }
+        public DateTime? FechaFirma3 { get; set; }
     }
 }
