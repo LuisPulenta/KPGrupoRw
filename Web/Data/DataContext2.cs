@@ -9,7 +9,7 @@ namespace Web.Data
         {
         }
         public DbSet<UsuarioInv> Usuarios { get; set; }
-        public DbSet<PEPedido> PEPedidos { get; set; }
-
+        public DbSet<PEPedido> VistaPEPedidosFirmasPendientes { get; set; }
+        public DbSet<PEPedidosFirma> PEPedidosFirmas { get; set; }
     }
 }

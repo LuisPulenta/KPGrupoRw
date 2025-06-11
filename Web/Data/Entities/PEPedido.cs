@@ -12,6 +12,7 @@ namespace Web.Data.Entities
         public string NroPedidoObra { get; set; }
         public int TotalItemAprobados { get; set; }
         public decimal ImporteAprobados { get; set; }
-
+        public int IDUSUARIO { get; set; }
+        public int IDFIRMA { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Web.Data;
@@ -20,13 +21,15 @@ namespace Web.Controllers.Api
 
         //-----------------------------------------------------------------------------------
         [HttpPost]
-        [Route("GetPEPedidos")]
-        public async Task<IActionResult> GetPEPedidos()
+        [Route("GetPEPedidos/{idUsuario}")]
+        
+        public async Task<IActionResult> GetPEPedidos([FromRoute] int idUsuario)
+        
         {
           
-            var compras = await _dataContext2.PEPedidos
+            var compras = await _dataContext2.VistaPEPedidosFirmasPendientes
             
-           .Where(o => o.Estado.ToLower() == "controlvsa")
+           .Where(o => o.IDUSUARIO==idUsuario)
            .OrderBy(o => o.NroPedidoObra)
            .ToListAsync();
             if (compras == null)
@@ -36,6 +39,29 @@ namespace Web.Controllers.Api
             return Ok(compras);
         }
 
-       
+        //-------------------------------------------------------------------------------------
+        [HttpPut]
+        [Route("PutPedidosFirma/{id}")]
+        public async Task<IActionResult> PutPedidosFirma([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var oldPedidosFirma = await _dataContext2.PEPedidosFirmas.FindAsync(id);
+            if (oldPedidosFirma == null)
+            {
+                return BadRequest("El PedidoFirma no existe.");
+            }
+
+            oldPedidosFirma.FECHA = DateTime.Now;
+            oldPedidosFirma.HS = DateTime.Now.Hour * 3600 + DateTime.Now.Minute * 60 + DateTime.Now.Second;
+            oldPedidosFirma.MEDIOFIRMA = "App";
+
+            _dataContext2.PEPedidosFirmas.Update(oldPedidosFirma);
+            await _dataContext2.SaveChangesAsync();
+            return Ok();
+        }
     }
 }
