@@ -10,7 +10,7 @@ namespace Web.Data.Entities
         public int IDPEPEDIDO { get; set; }
         public int NROUNIDADNEGOCIO { get; set; }
         public int IDUSUARIO { get; set; }
-        public DateTime FECHA { get; set; }
+        public DateTime? FECHA { get; set; }
         public int HS { get; set; }
         public string MEDIOFIRMA { get; set; }
     }

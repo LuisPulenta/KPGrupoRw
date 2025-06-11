@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Common.Models.Request;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Web.Data;
+using Web.Data.Entities;
 
 namespace Web.Controllers.Api
 {
@@ -40,16 +42,18 @@ namespace Web.Controllers.Api
         }
 
         //-------------------------------------------------------------------------------------
+
         [HttpPut]
         [Route("PutPedidosFirma/{id}")]
-        public async Task<IActionResult> PutPedidosFirma([FromRoute] int id)
+        public async Task<IActionResult> PutPedidosFirma([FromRoute] int id, [FromBody] PedidosFirmaRequest request)
+
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var oldPedidosFirma = await _dataContext2.PEPedidosFirmas.FindAsync(id);
+            var oldPedidosFirma = await _dataContext2.PEPedidosFirmas.FindAsync(request.IDFIRMA);
             if (oldPedidosFirma == null)
             {
                 return BadRequest("El PedidoFirma no existe.");
