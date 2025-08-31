@@ -7,7 +7,8 @@ namespace Web.Data.Entities
     {
         [Key]
         public int NROREGISTRO { get; set; }
-        public int NROOBRA  { get; set; }
+
+        public int NROOBRA { get; set; }
         public int? IDObrasPostes { get; set; }
         public string OBSERVACION { get; set; }
         public string LINK { get; set; }
@@ -23,9 +24,9 @@ namespace Web.Data.Entities
         public DateTime? FechaHS { get; set; }
         public int? TipoDeFoto { get; set; }
         public string DireccionFoto { get; set; }
+
         public string ImageFullPath => string.IsNullOrEmpty(LINK)
-        ? $"http://www.gaos2.keypress.com.ar/KPGrupoRwApi/images/Obras/noimage.png"
-        : $"http://www.gaos2.keypress.com.ar/KPGrupoRwApi{LINK.Substring(1)}";
+        ? $"https://gaos2.keypress.com.ar/KPGrupoRwApi/images/Obras/noimage.png"
+        : $"https://gaos2.keypress.com.ar/KPGrupoRwApi{LINK.Substring(1)}";
     }
 }
-

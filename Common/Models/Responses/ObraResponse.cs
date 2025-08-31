@@ -26,7 +26,7 @@ namespace Common.Models.Responses
         public ICollection<ObraDocumentoResponse> ObrasDocumentos { get; set; }
         public int ObrasDocumentsNumber => ObrasDocumentos == null ? 0 : ObrasDocumentos.Count;
         public string ImageFullPath => ObrasDocumentos == null || ObrasDocumentos.Count == 0
-            ? $"http://www.gaos2.keypress.com.ar/KPGrupoRwApi/api/images/Obras/noimage.png"
+            ? $"https://gaos2.keypress.com.ar/KPGrupoRwApi/api/images/Obras/noimage.png"
             : ObrasDocumentos.FirstOrDefault().ImageFullPath;
     }
 }

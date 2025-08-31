@@ -21,8 +21,8 @@ namespace Common.Models.Responses
         public int? TipoDeFoto { get; set; }
         public string DireccionFoto { get; set; }
         public string ImageFullPath => string.IsNullOrEmpty(LINK)
-        ? $"http://www.gaos2.keypress.com.ar/KPGrupoRwApi/images/Obras/noimage.png"
-        : $"http://www.gaos2.keypress.com.ar/KPGrupoRwApi{LINK.Substring(1)}";
+        ? $"https://gaos2.keypress.com.ar/KPGrupoRwApi/images/Obras/noimage.png"
+        : $"https://gaos2.keypress.com.ar/KPGrupoRwApi{LINK.Substring(1)}";
 
         public string DescFoto => TipoDeFoto == 0
         ? "Relevamiento(Vereda/Calzada/Traza)"
