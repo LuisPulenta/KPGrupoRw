@@ -10,6 +10,7 @@
         public byte Estado { get; set; }
         public int? HabilitaAPP { get; set; }
         public int? HabilitaFotos { get; set; }
+        public string HabilitaFlotas { get; set; }
         public string Modulo { get; set; }
         public string CodigoCausante { get; set; }
         public bool EstadoInv { get; set; }

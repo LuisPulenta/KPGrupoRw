@@ -7,6 +7,7 @@ namespace Web.Data.Entities
     {
         [Key]
         public int ID_WS { get; set; }
+
         public int NROCONEXION { get; set; }
         public string USUARIO { get; set; }
         public string IP { get; set; }

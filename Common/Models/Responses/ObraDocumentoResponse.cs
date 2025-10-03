@@ -1,4 +1,5 @@
 ﻿using System;
+using Common.Constants;
 
 namespace Common.Models.Responses
 {
@@ -20,9 +21,10 @@ namespace Common.Models.Responses
         public DateTime? FechaHsFoto { get; set; }
         public int? TipoDeFoto { get; set; }
         public string DireccionFoto { get; set; }
+
         public string ImageFullPath => string.IsNullOrEmpty(LINK)
-        ? $"https://gaos2.keypress.com.ar/KPGrupoRwApi/images/Obras/noimage.png"
-        : $"https://gaos2.keypress.com.ar/KPGrupoRwApi{LINK.Substring(1)}";
+        ? $"{Urls.BaseUrl}/images/Obras/noimage.png"
+        : $"{Urls.BaseUrl}{LINK.Substring(1)}";
 
         public string DescFoto => TipoDeFoto == 0
         ? "Relevamiento(Vereda/Calzada/Traza)"
@@ -44,6 +46,6 @@ namespace Common.Models.Responses
             ? "Lindero 1"
             : TipoDeFoto == 9
             ? "Lindero 2"
-            :"";
+            : "";
     }
 }

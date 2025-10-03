@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Constants;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using static System.Net.WebRequestMethods;
@@ -25,8 +26,9 @@ namespace Common.Models.Responses
         public int CantObras { get; set; }
         public ICollection<ObraDocumentoResponse> ObrasDocumentos { get; set; }
         public int ObrasDocumentsNumber => ObrasDocumentos == null ? 0 : ObrasDocumentos.Count;
+
         public string ImageFullPath => ObrasDocumentos == null || ObrasDocumentos.Count == 0
-            ? $"https://gaos2.keypress.com.ar/KPGrupoRwApi/api/images/Obras/noimage.png"
+            ? $"{Urls.BaseUrl}/images/Obras/noimage.png"
             : ObrasDocumentos.FirstOrDefault().ImageFullPath;
     }
 }

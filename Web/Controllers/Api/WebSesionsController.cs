@@ -49,15 +49,13 @@ namespace Web.Controllers.Api
                 MODULO = o.MODULO,
                 NROCONEXION = o.NROCONEXION,
                 USUARIO = o.USUARIO,
-                VersionSistema=o.VersionSistema
-
+                VersionSistema = o.VersionSistema
             }).ToList());
-
 
             return Ok(response);
         }
 
-        //--------------------------------------------------------------------------------------      
+        //--------------------------------------------------------------------------------------
         [HttpPut("{id}")]
         [Route("PutWebSesion")]
         public async Task<IActionResult> PutWebSesion(int id)
@@ -71,13 +69,11 @@ namespace Web.Controllers.Api
             }
 
             oldWebSesion.LOGOUTDATE = DateTime.Now;
-            oldWebSesion.LOGOUTTIME = (DateTime.Now.Hour*3600 + DateTime.Now.Minute*60 + DateTime.Now.Second)*100 ;
-            
+            oldWebSesion.LOGOUTTIME = (DateTime.Now.Hour * 3600 + DateTime.Now.Minute * 60 + DateTime.Now.Second) * 100;
+
             _dataContext.WebSesion.Update(oldWebSesion);
             await _dataContext.SaveChangesAsync();
             return Ok(true);
         }
-
-
     }
 }

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Web.Data;
 using Common.Models.Request;
 using Common.Models.Responses;
-using Web.Data.Entities;
 
 namespace Web.Controllers.Api
 {
@@ -16,7 +15,6 @@ namespace Web.Controllers.Api
         private readonly IConfiguration _configuration;
         private readonly DataContext _dataContext;
         private readonly DataContext2 _dataContext2;
-
 
         public AccountController(DataContext dataContext, DataContext2 dataContext2)
         {
@@ -48,10 +46,11 @@ namespace Web.Controllers.Api
                 Contrasena = user.Contrasena,
                 HabilitaAPP = user.HabilitaAPP,
                 HabilitaFotos = user.HabilitaFotos,
+                HabilitaFlotas = user.HabilitaFlotas,
                 Modulo = user.Modulo,
                 CodigoCausante = user.CodigoCausante,
-                EstadoInv=userInv.Estado,
-                Compras=userInv.Compras,
+                EstadoInv = userInv.Estado,
+                Compras = userInv.Compras,
             };
 
             return Ok(usuarioResponse);
